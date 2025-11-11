@@ -47,13 +47,13 @@ class AssessmentUploadService {
     });
   }
 
-  Future<Map<String, dynamic>?> getAssessmentForUpload() async {
+  Future<Map<String, dynamic>?> getAssessmentForUpload(String assessmentId) async {
     final db = await DatabaseHelper().database;
 
     // First get the grouped criteria data
     final List<Map<String, dynamic>> criteriaResults = await db.rawQuery(
       '''SELECT assessment_details.nik_penyadap, tappers.name, tappers.kemandoran, 
-       tappers.departemen, assessment_details.task, assessment_details.jenis_kulit_pohon, 
+       tappers.departemen, tappers.status, assessment_details.task, assessment_details.jenis_kulit_pohon, 
        assessment_details.panel_sadap, assessment_details.tahun_tanam, assessment_details.clone,
        assessment_details.blok, criteria.name as criteria_name, criteria.description as desc, 
        SUM(criteria.score) as sum_score, assessment_details.tanggal_inspeksi, 
@@ -62,8 +62,10 @@ class AssessmentUploadService {
        LEFT JOIN assessment_details ON tree_assessments.assessment_detail_id = assessment_details.id 
        LEFT JOIN tappers ON assessment_details.nik_penyadap = tappers.nik 
        LEFT JOIN criteria ON criteria.id = tree_assessments.criteria_id 
+        WHERE assessment_details.id = ?
        GROUP BY criteria.id 
        ORDER BY criteria.id ASC''',
+       [assessmentId]
     );
 
     print('Criteria Results: $criteriaResults');

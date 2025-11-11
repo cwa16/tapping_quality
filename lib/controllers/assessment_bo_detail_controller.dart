@@ -10,6 +10,7 @@ class AssessmentBoDetailController extends GetxController {
   var selectedDate = DateTime.now().obs;
 
   var userList = <UserModel>[].obs;
+
   var filteredUsers = <UserModel>[].obs;
   var selectedUser = Rx<UserModel?>(null);
   var blockList = <BlockModel>[].obs;
@@ -58,6 +59,7 @@ class AssessmentBoDetailController extends GetxController {
       filteredUsers.value = users;
       blockList.value = await BlockService().getBlocks();
       filteredBlocks.value = blockList;
+      print('filteredBlokks: $filteredBlocks');
     } catch (e) {
       print('Error fetching users: $e');
       userList.value = [];

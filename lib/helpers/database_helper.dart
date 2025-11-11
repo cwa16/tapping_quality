@@ -47,8 +47,8 @@ class DatabaseHelper {
           'departemen': row[4],
           'jabatan': row[5],
           'email': row[6],
-          'role': row[8],
-          'password': row[11],
+          'role': row[7],
+          'password': row[8],
         });
       }
     }
@@ -75,7 +75,7 @@ class DatabaseHelper {
           'jabatan': row[5],
           'kemandoran': row[6],
           'no_hp': row[7],
-          'user_id': row[9],
+          'user_id': row[8],
         });
       }
     }

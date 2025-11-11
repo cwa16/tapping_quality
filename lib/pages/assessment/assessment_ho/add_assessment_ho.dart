@@ -147,7 +147,7 @@ class AddAssessmentHo extends StatelessWidget {
                         userController.userList
                             .map(
                               (user) => DropdownMenuEntry<UserModel>(
-                                label: user.name,
+                               label: '${user.nik} ${user.name} (${user.departemen})',
                                 value: user,
                               ),
                             )

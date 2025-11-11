@@ -39,20 +39,23 @@ class UploadAssessmentController extends GetxController {
 
   void uploadAssessment(Map<String, dynamic> data) async {
     isUploading.value = true;
-    final url = Uri.parse('http://192.168.100.29:8000/api/assessment-upload');
+    final url = Uri.parse('http://192.168.99.202/bskp-gate-tapping-qty/public/api/assessment-upload');
     final service = AssessmentUploadService();
     final id = data['assessment_id'].toString();
+    final assessmentId = data['assessment_id'].toString();
     isUploadingMap[id] = true;
     isAnyUploading.value = true;
     try {
       print('Uploading assessment: ${data['assessment_id']}');
 
       // Get the transformed data ready for backend
-      final payload = await service.getAssessmentForUpload();
+      final payload = await service.getAssessmentForUpload(assessmentId);
       
       if (payload == null) {
         throw Exception('No assessment data found');
       }
+
+      print('Payload: ${jsonEncode(payload)}');
 
       final response = await http.post(
         url,

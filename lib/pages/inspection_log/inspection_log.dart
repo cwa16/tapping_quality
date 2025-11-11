@@ -170,7 +170,7 @@ class InspectionLog extends StatelessWidget {
               return Expanded(
                 child: Center(
                   child: Image.asset(
-                    'assets/images/search.png',
+                    'assets/icons/search.png',
                     width: 300,
                     height: 500,
                     fit: BoxFit.contain,
@@ -181,7 +181,7 @@ class InspectionLog extends StatelessWidget {
               return Expanded(
                 child: Center(
                   child: Image.asset(
-                    'assets/images/404-page.png',
+                    'assets/icons/404.png',
                     width: 300,
                     height: 500,
                     fit: BoxFit.contain,

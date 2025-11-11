@@ -8,10 +8,9 @@ class UserService {
     final dbClient = await db.database;
     final result = await dbClient.query(
       'tappers',
-      where: 'departemen = ?',
-      whereArgs: [dept],
       orderBy: 'name ASC',
     );
+    print('Fetched Tappers: $result');
     return result.map((user) => UserModel.fromMap(user)).toList();
   }
 

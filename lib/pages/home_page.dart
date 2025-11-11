@@ -494,7 +494,7 @@ class HomePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(50),
                                 image: const DecorationImage(
                                   image: AssetImage(
-                                    'assets/icons/logout-box-line.png',
+                                    'assets/icons/logout.png',
                                   ),
                                   fit: BoxFit.cover,
                                 ),
